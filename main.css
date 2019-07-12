@@ -1,0 +1,24 @@
+body {
+	background-color: black;
+	margin: 0;
+	overflow: hidden;
+}
+
+.wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	/*transform:translate(50%, 50%);*/
+}
+
+.point {
+	height: 5px;
+	width: 5px;
+	border-radius: 50%;
+	background-color: white;
+	position: absolute;
+	transform:translate(50vw, 50vh);
+	transition: 1s;
+	transition-timing-function: cubic-bezier(0,.63,0,1.03);
+}
