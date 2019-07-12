@@ -48,6 +48,16 @@ $(document).ready(function() {
 	    }
 	    reRenderPoints();
 	});
+
+	$('#reset').on('click', function() {
+		basis = {
+			x1 : 100,
+			x2 : 0,
+			y1 : 0,
+			y2 : 100,
+		};
+		reRenderPoints();
+	});
 });
 
 /*

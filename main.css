@@ -22,3 +22,12 @@ body {
 	transition: 1s;
 	transition-timing-function: cubic-bezier(0,.63,0,1.03);
 }
+
+#reset {
+	background-color: white;
+	height: 50px;
+	width: 100px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
