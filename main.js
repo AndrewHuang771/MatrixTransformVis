@@ -5,12 +5,33 @@ let basis = {
 	y2 : 100,
 };
 
-function reRenderPoints() {
+function Render() {
+	RenderPoints();
+	RenderVectors();
+}
+
+function RenderPoints() {
 	$('.point').each(function(i, obj) {
     	let x = obj.getAttribute('data-x');
     	let y = obj.getAttribute('data-y');
     	obj.style.top = x*basis.x1 + y*basis.x2 + 'px';
     	obj.style.left = x*basis.y1 + y*basis.y2 + 'px';
+	});
+}
+
+function RenderVectors() {
+	$('.vector').each(function(i, obj) {
+    	let x = obj.getAttribute('data-x');
+    	let y = obj.getAttribute('data-y');
+    	let newX = x*basis.x1 + y*basis.x2;
+    	let newY = x*basis.y1 + y*basis.y2;
+    	let magnitude = Math.sqrt( newX*newX + newY*newY );
+    	let angle = (Math.atan2( newX, newY )*180/Math.PI);
+    	obj.style.width = magnitude + 'px';
+		obj.style.top = newX/2 + 'px';
+		obj.style.left = newY/2 + 'px';
+		obj.style.transform = "translate(-50%, -50%)";
+    	obj.style.transform += "rotate(" + angle + "deg)";
 	});
 }
 
@@ -25,6 +46,11 @@ $(document).ready(function() {
 				'top': i*basis.x1 + j*basis.x2 + 'px',
 				'left': i*basis.y1 + j*basis.y2 + 'px',
 			});
+			if ( i == 0 && j == 0 ) {
+				$point.css({
+					'background-color': 'red',
+				});
+			}
 			$('.wrapper').append($point);
 		}
 	}
@@ -35,7 +61,7 @@ $(document).ready(function() {
 			y1 : 0,
 			y2 : 100,
 		};
-		reRenderPoints();
+		Render();
 	}, 1000);
 
 	$("#basis_form").submit(function(e) {
@@ -46,7 +72,7 @@ $(document).ready(function() {
 	    	x2: parseInt(document.getElementById('x2').value, 10),
 	    	y2: parseInt(document.getElementById('y2').value, 10),
 	    }
-	    reRenderPoints();
+	    Render();
 	});
 
 	$('#reset').on('click', function() {
@@ -56,18 +82,20 @@ $(document).ready(function() {
 			y1 : 0,
 			y2 : 100,
 		};
-		reRenderPoints();
+		Render();
 	});
 });
 
 /*
 
+Coordinates: 
+
 Matrix A.
 ___________
 |    |    |
-| y2 | y1 |
+| y1 | y2 |
 |----|----|
-| x2 | x1 |
+| x1 | x2 |
 |____|____|
 
 */

@@ -9,7 +9,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	background-color: black;
-	/*transform:translate(50%, 50%);*/
+	transform: translate(50vw, 50vh);
 }
 
 .point {
@@ -18,9 +18,9 @@ body {
 	border-radius: 50%;
 	background-color: white;
 	position: absolute;
-	transform:translate(50vw, 50vh);
 	transition: 1s;
 	transition-timing-function: cubic-bezier(0,.63,0,1.03);
+	transform: translate(-2.5px,-2.5px );
 }
 
 #reset {
@@ -30,4 +30,15 @@ body {
 	position: absolute;
 	top: 10px;
 	right: 10px;
+}
+
+.vector {
+	top: 0px;
+	left: 0px;
+	background-color: red;
+	height: 3px;
+	position: absolute;
+	transition: 1s;
+	transition-timing-function: cubic-bezier(0,.63,0,1.03);
+	z-index: 5;
 }
