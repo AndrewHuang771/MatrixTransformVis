@@ -125,7 +125,7 @@ $(document).ready(function() {
 	    basis = {
 	    	x1: parseInt(document.getElementById('x1').value, 10)*100,
 	    	y1: parseInt(document.getElementById('y1').value, 10)*100*(-1),
-	    	x2: parseInt(document.getElementById('x2').value, 10)*100,
+	    	x2: parseInt(document.getElementById('x2').value, 10)*100*(-1),
 	    	y2: parseInt(document.getElementById('y2').value, 10)*100,
 	    }
 	    Render();
